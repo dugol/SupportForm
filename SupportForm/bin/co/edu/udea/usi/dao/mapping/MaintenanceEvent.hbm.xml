@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 27, 2018 3:33:32 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.usi.dto.MaintenanceEvent" table="MaintenanceEvent">
+        <id name="idREvent" type="java.lang.Integer">
+            <column name="IDREVENT" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="request" class="co.edu.udea.usi.dto.Request" fetch="join">
+            <column name="REQUEST" />
+        </many-to-one>
+        <property name="date" type="java.util.Date">
+            <column name="DATE" />
+        </property>
+        <property name="stockNumber" type="java.lang.String">
+            <column name="STOCKNUMBER" />
+        </property>
+        <property name="interventionType" type="java.lang.String">
+            <column name="INTERVENTIONTYPE" />
+        </property>
+        <property name="firstState" type="java.lang.String">
+            <column name="FIRSTSTATE" />
+        </property>
+        <property name="firstObservation" type="java.lang.String">
+            <column name="FIRSTOBSERVATION" />
+        </property>
+        <property name="process" type="java.lang.String">
+            <column name="PROCESS" />
+        </property>
+        <property name="finalState" type="java.lang.String">
+            <column name="FINALSTATE" />
+        </property>
+        <property name="finalObservation" type="java.lang.String">
+            <column name="FINALOBSERVATION" />
+        </property>
+        <property name="administrator" type="java.lang.String">
+            <column name="ADMINISTRATOR" />
+        </property>
+    </class>
+</hibernate-mapping>

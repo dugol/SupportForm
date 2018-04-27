@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 27, 2018 3:33:32 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.usi.dto.User" table="User">
+        <id name="email" type="java.lang.String">
+            <column name="EMAIL" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="mainFrame" class="co.edu.udea.usi.dto.MainFrame" fetch="join">
+            <column name="MAINFRAME" />
+        </many-to-one>
+        <many-to-one name="typeUser" class="co.edu.udea.usi.dto.TypeUser" fetch="join">
+            <column name="TYPEUSER" />
+        </many-to-one>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="office" type="java.lang.String">
+            <column name="OFFICE" />
+        </property>
+        <property name="phoneNumber" type="java.lang.String">
+            <column name="PHONENUMBER" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <set name="requests" table="USER" inverse="false" lazy="true">
+            <key>
+                <column name="EMAIL" />
+            </key>
+            <element type="string">
+                <column name="REQUESTS" />
+            </element>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 27, 2018 3:33:32 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.usi.dto.SharedEvent" table="SharedEvent">
+        <id name="idSEvent" type="java.lang.Integer">
+            <column name="IDSEVENT" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="request" class="co.edu.udea.usi.dto.Request" fetch="join">
+            <column name="REQUEST" />
+        </many-to-one>
+        <property name="date" type="java.util.Date">
+            <column name="DATE" />
+        </property>
+        <property name="action" type="java.lang.String">
+            <column name="ACTION" />
+        </property>
+        <property name="route" type="java.lang.String">
+            <column name="ROUTE" />
+        </property>
+        <property name="userType" type="java.lang.String">
+            <column name="USERTYPE" />
+        </property>
+        <property name="stockNumber" type="java.lang.String">
+            <column name="STOCKNUMBER" />
+        </property>
+        <property name="user" type="java.lang.String">
+            <column name="USER" />
+        </property>
+        <property name="office" type="java.lang.String">
+            <column name="OFFICE" />
+        </property>
+        <property name="administrator" type="java.lang.String">
+            <column name="ADMINISTRATOR" />
+        </property>
+    </class>
+</hibernate-mapping>

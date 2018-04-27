@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 27, 2018 3:33:32 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.usi.dto.GeneralEvent" table="GeneralEvent">
+        <id name="idGEvent" type="java.lang.Integer">
+            <column name="IDGEVENT" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="request" class="co.edu.udea.usi.dto.Request" fetch="join">
+            <column name="REQUEST" />
+        </many-to-one>
+        <property name="date" type="java.util.Date">
+            <column name="DATE" />
+        </property>
+        <property name="eventTime" type="java.lang.String">
+            <column name="EVENTTIME" />
+        </property>
+        <property name="stockNumber" type="java.lang.String">
+            <column name="STOCKNUMBER" />
+        </property>
+        <property name="detail" type="java.lang.String">
+            <column name="DETAIL" />
+        </property>
+        <property name="administrator" type="java.lang.String">
+            <column name="ADMINISTRATOR" />
+        </property>
+    </class>
+</hibernate-mapping>

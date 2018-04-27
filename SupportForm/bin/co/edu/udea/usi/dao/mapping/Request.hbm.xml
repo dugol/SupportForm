@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 27, 2018 3:33:32 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.usi.dto.Request" table="Request">
+        <id name="idRequest" type="java.lang.Integer">
+            <column name="IDREQUEST" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="typeRequest" class="co.edu.udea.usi.dto.TypeRequest" fetch="join">
+            <column name="TYPEREQUEST" />
+        </many-to-one>
+        <many-to-one name="user" class="co.edu.udea.usi.dto.User" fetch="join">
+            <column name="USER" />
+        </many-to-one>
+        <property name="date" type="java.util.Date">
+            <column name="DATE" />
+        </property>
+        <property name="eventTime" type="java.lang.String">
+            <column name="EVENTTIME" />
+        </property>
+        <property name="office" type="java.lang.String">
+            <column name="OFFICE" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="channel" type="java.lang.String">
+            <column name="CHANNEL" />
+        </property>
+        <property name="priority" type="java.lang.Integer">
+            <column name="PRIORITY" />
+        </property>
+        <property name="level" type="java.lang.Integer">
+            <column name="LEVEL" />
+        </property>
+        <property name="state" type="java.lang.Character">
+            <column name="STATE" />
+        </property>
+        <set name="maintenanceEvents" table="REQUEST" inverse="false" lazy="true">
+            <key>
+                <column name="IDREQUEST" />
+            </key>
+            <element type="string">
+                <column name="MAINTENANCEEVENTS" />
+            </element>
+        </set>
+        <set name="transferEvents" table="REQUEST" inverse="false" lazy="true">
+            <key>
+                <column name="IDREQUEST" />
+            </key>
+            <element type="string">
+                <column name="TRANSFEREVENTS" />
+            </element>
+        </set>
+        <set name="sharedEvents" table="REQUEST" inverse="false" lazy="true">
+            <key>
+                <column name="IDREQUEST" />
+            </key>
+            <element type="string">
+                <column name="SHAREDEVENTS" />
+            </element>
+        </set>
+        <set name="generalEvents" table="REQUEST" inverse="false" lazy="true">
+            <key>
+                <column name="IDREQUEST" />
+            </key>
+            <element type="string">
+                <column name="GENERALEVENTS" />
+            </element>
+        </set>
+        <set name="modificationEvents" table="REQUEST" inverse="false" lazy="true">
+            <key>
+                <column name="IDREQUEST" />
+            </key>
+            <element type="string">
+                <column name="MODIFICATIONEVENTS" />
+            </element>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 27, 2018 3:33:32 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.usi.dto.RefundEvent" table="RefundEvent">
+        <id name="idReEvent" type="java.lang.Integer">
+            <column name="IDREEVENT" />
+            <generator class="assigned" />
+        </id>
+        <property name="date" type="java.util.Date">
+            <column name="DATE" />
+        </property>
+        <property name="stockNumber" type="java.lang.String">
+            <column name="STOCKNUMBER" />
+        </property>
+        <property name="item" type="java.lang.String">
+            <column name="ITEM" />
+        </property>
+        <property name="amount" type="java.lang.Integer">
+            <column name="AMOUNT" />
+        </property>
+        <property name="reference" type="java.lang.String">
+            <column name="REFERENCE" />
+        </property>
+        <property name="state" type="java.lang.String">
+            <column name="STATE" />
+        </property>
+        <property name="observation" type="java.lang.String">
+            <column name="OBSERVATION" />
+        </property>
+    </class>
+</hibernate-mapping>

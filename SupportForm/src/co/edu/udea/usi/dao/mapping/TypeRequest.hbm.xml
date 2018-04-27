@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 27, 2018 3:33:32 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.usi.dto.TypeRequest" table="TypeRequest">
+        <id name="idTypeRequest" type="java.lang.Integer">
+            <column name="IDTYPEREQUEST" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <set name="requests" table="TYPEREQUEST" inverse="false" lazy="true">
+            <key>
+                <column name="IDTYPEREQUEST" />
+            </key>
+            <element type="string">
+                <column name="REQUESTS" />
+            </element>
+        </set>
+    </class>
+</hibernate-mapping>

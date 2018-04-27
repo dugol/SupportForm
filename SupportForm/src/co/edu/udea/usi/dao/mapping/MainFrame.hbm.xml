@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 27, 2018 3:33:32 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.usi.dto.MainFrame" table="MainFrame">
+        <id name="serialNumber" type="java.lang.String">
+            <column name="SERIALNUMBER" />
+            <generator class="assigned" />
+        </id>
+        <property name="stockNumber" type="java.lang.String">
+            <column name="STOCKNUMBER" />
+        </property>
+        <property name="reference" type="java.lang.String">
+            <column name="REFERENCE" />
+        </property>
+        <property name="brand" type="java.lang.String">
+            <column name="BRAND" />
+        </property>
+        <property name="processor" type="java.lang.String">
+            <column name="PROCESSOR" />
+        </property>
+        <property name="ram" type="int">
+            <column name="RAM" />
+        </property>
+        <property name="hardDrive" type="java.lang.String">
+            <column name="HARDDRIVE" />
+        </property>
+        <property name="mainBoard" type="java.lang.String">
+            <column name="MAINBOARD" />
+        </property>
+        <set name="users" table="MAINFRAME" inverse="false" lazy="true">
+            <key>
+                <column name="SERIALNUMBER" />
+            </key>
+            <element type="string">
+                <column name="USERS" />
+            </element>
+        </set>
+    </class>
+</hibernate-mapping>

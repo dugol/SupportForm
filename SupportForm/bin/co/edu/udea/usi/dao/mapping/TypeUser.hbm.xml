@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 27, 2018 3:33:32 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.usi.dto.TypeUser" table="TypeUser">
+        <id name="idTypeUser" type="int">
+            <column name="IDTYPEUSER" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <set name="users" table="TYPEUSER" inverse="false" lazy="true">
+            <key>
+                <column name="IDTYPEUSER" />
+            </key>
+            <element type="string">
+                <column name="USERS" />
+            </element>
+        </set>
+    </class>
+</hibernate-mapping>
