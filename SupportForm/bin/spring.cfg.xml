@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/support"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>co/edu/udea/usi/dao/mapping/GeneralEvent.hbm.xml</value>
+				<value>co/edu/udea/usi/dao/mapping/MainFrame.hbm.xml</value>
+				<value>co/edu/udea/usi/dao/mapping/MaintenanceEvent.hbm.xml</value>
+				<value>co/edu/udea/usi/dao/mapping/ModificationEvent.hbm.xml</value>
+				<value>co/edu/udea/usi/dao/mapping/RefundEvent.hbm.xml</value>
+				<value>co/edu/udea/usi/dao/mapping/Request.hbm.xml</value>
+				<value>co/edu/udea/usi/dao/mapping/SharedEvent.hbm.xml</value>
+				<value>co/edu/udea/usi/dao/mapping/TransferEvent.hbm.xml</value>
+				<value>co/edu/udea/usi/dao/mapping/TypeRequest.hbm.xml</value>
+				<value>co/edu/udea/usi/dao/mapping/TypeUser.hbm.xml</value>
+				<value>co/edu/udea/usi/dao/mapping/User.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="generalEventDao" class="co.edu.udea.usi.dao.impl.GeneralEventDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="mainFrameDao" class="co.edu.udea.usi.dao.impl.MainFrameDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="maintenanceEventDao" class="co.edu.udea.usi.dao.impl.MaintenanceEventDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="modificationEventDao" class="co.edu.udea.usi.dao.impl.ModificationEventDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="refundEventDao" class="co.edu.udea.usi.dao.impl.RefundEventDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="requestDao" class="co.edu.udea.usi.dao.impl.RequestDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="sharedEventDao" class="co.edu.udea.usi.dao.impl.SharedEventDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="transferEventDao" class="co.edu.udea.usi.dao.impl.TransferEventDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="typeRequestDao" class="co.edu.udea.usi.dao.impl.TypeRequestDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="typeUserDao" class="co.edu.udea.usi.dao.impl.TypeUserDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="userDao" class="co.edu.udea.usi.dao.impl.UserDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+</beans>

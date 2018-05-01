@@ -3,12 +3,14 @@ package co.edu.udea.usi.dao.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import co.edu.udea.usi.dao.RequestDAO;
 import co.edu.udea.usi.dto.Request;
 import co.edu.udea.usi.dto.User;
 import co.edu.udea.usi.exception.UsiDaoException;
 
-public class RequestDAOImpl implements RequestDAO {
+public class RequestDAOImpl extends HibernateDaoSupport implements RequestDAO {
 
 	public RequestDAOImpl() {
 		// TODO Auto-generated constructor stub

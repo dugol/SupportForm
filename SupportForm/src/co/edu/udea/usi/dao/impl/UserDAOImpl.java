@@ -2,13 +2,15 @@ package co.edu.udea.usi.dao.impl;
 
 import java.util.List;
 
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import co.edu.udea.usi.dao.UserDAO;
 import co.edu.udea.usi.dto.MainFrame;
 import co.edu.udea.usi.dto.TypeUser;
 import co.edu.udea.usi.dto.User;
 import co.edu.udea.usi.exception.UsiDaoException;
 
-public class UserDAOImpl implements UserDAO {
+public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 
 	public UserDAOImpl() {
 		// TODO Auto-generated constructor stub

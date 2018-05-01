@@ -3,12 +3,14 @@ package co.edu.udea.usi.dao.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import co.edu.udea.usi.dao.SharedEventDAO;
 import co.edu.udea.usi.dto.Request;
 import co.edu.udea.usi.dto.SharedEvent;
 import co.edu.udea.usi.exception.UsiDaoException;
 
-public class SharedEventDAOImpl implements SharedEventDAO {
+public class SharedEventDAOImpl extends HibernateDaoSupport implements SharedEventDAO {
 
 	public SharedEventDAOImpl() {
 		// TODO Auto-generated constructor stub

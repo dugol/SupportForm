@@ -3,12 +3,14 @@ package co.edu.udea.usi.dao.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import co.edu.udea.usi.dao.RefundEventDAO;
 import co.edu.udea.usi.dto.RefundEvent;
 import co.edu.udea.usi.dto.Request;
 import co.edu.udea.usi.exception.UsiDaoException;
 
-public class RefundEventDAOImpl implements RefundEventDAO {
+public class RefundEventDAOImpl extends HibernateDaoSupport implements RefundEventDAO {
 
 	public RefundEventDAOImpl() {
 		// TODO Auto-generated constructor stub

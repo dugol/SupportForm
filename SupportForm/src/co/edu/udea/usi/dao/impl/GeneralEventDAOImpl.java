@@ -3,12 +3,14 @@ package co.edu.udea.usi.dao.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import co.edu.udea.usi.dao.GeneralEventDAO;
 import co.edu.udea.usi.dto.GeneralEvent;
 import co.edu.udea.usi.dto.Request;
 import co.edu.udea.usi.exception.UsiDaoException;
 
-public class GeneralEventDAOImpl implements GeneralEventDAO {
+public class GeneralEventDAOImpl extends HibernateDaoSupport implements GeneralEventDAO {
 
 	public GeneralEventDAOImpl() {
 		// TODO Auto-generated constructor stub
