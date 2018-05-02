@@ -128,4 +128,8 @@ reference varchar(30),
 state varchar(15),
 observation varchar(80),
 primary key(idReEvent));
+
+INSERT INTO MainFrame values('000000','G32M','SURE','0000000','Intel core i3',8,'500GB','G32M');
+
+insert into User values('rgr2228@gmail.com',1,'Raul','','0000000','','12345');
 ---------------------------------------------------------------------------------

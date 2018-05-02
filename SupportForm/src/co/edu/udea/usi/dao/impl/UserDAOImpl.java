@@ -1,7 +1,12 @@
 package co.edu.udea.usi.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.usi.dao.UserDAO;
@@ -30,8 +35,17 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 
 	@Override
 	public List<User> findAllUser() throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		List<User> users = null;
+		try {
+			session = this.getSessionFactory().getCurrentSession();
+			users = new ArrayList<User>();
+			Criteria criteria =session.createCriteria(User.class);
+			users = criteria.list();
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		return users;
 	}
 
 	@Override
@@ -42,8 +56,18 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 
 	@Override
 	public List<User> findByType(TypeUser typeUser) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		List<User> users = null;
+		try {
+			users = new ArrayList<User>();
+			session = this.getSessionFactory().getCurrentSession();
+			Query query = session.createQuery("from User where typeUser=:typeUser");
+			query.setParameter("typeUser",typeUser);
+			users = query.list();
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		return users;
 	}
 
 	@Override

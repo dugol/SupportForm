@@ -16,7 +16,6 @@ public class User implements java.io.Serializable {
 	private String office;
 	private String phoneNumber;
 	private String password;
-	private Set requests = new HashSet(0);
 
 	public User() {
 	}
@@ -28,7 +27,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public User(String email, MainFrame mainFrame, TypeUser typeUser, String name, String office, String phoneNumber,
-			String password, Set requests) {
+			String password) {
 		this.email = email;
 		this.mainFrame = mainFrame;
 		this.typeUser = typeUser;
@@ -36,7 +35,6 @@ public class User implements java.io.Serializable {
 		this.office = office;
 		this.phoneNumber = phoneNumber;
 		this.password = password;
-		this.requests = requests;
 	}
 
 	public String getEmail() {
@@ -93,14 +91,6 @@ public class User implements java.io.Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Set getRequests() {
-		return this.requests;
-	}
-
-	public void setRequests(Set requests) {
-		this.requests = requests;
 	}
 
 }

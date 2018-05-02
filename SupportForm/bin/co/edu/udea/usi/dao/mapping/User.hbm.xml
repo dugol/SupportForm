@@ -26,13 +26,5 @@
         <property name="password" type="java.lang.String">
             <column name="PASSWORD" />
         </property>
-        <set name="requests" table="USER" inverse="false" lazy="true">
-            <key>
-                <column name="EMAIL" />
-            </key>
-            <element type="string">
-                <column name="REQUESTS" />
-            </element>
-        </set>
     </class>
 </hibernate-mapping>

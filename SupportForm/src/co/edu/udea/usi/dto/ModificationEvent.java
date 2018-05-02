@@ -43,7 +43,7 @@ public class ModificationEvent implements java.io.Serializable {
 		return this.idMEvent;
 	}
 
-	public void setIdMevent(Integer idMEvent) {
+	public void setIdMEvent(Integer idMEvent) {
 		this.idMEvent = idMEvent;
 	}
 
