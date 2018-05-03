@@ -84,7 +84,7 @@ public class GeneralEventDAOImpl extends HibernateDaoSupport implements GeneralE
 		try {
 			generalEvents=new ArrayList<GeneralEvent>();
 			session=this.getSessionFactory().getCurrentSession();
-			Query query=session.createQuery("from GeneralEvent where administrador=:administrador ");
+			Query query=session.createQuery("from GeneralEvent where administrador=:administrador");
 			query.setParameter("administrador", admin);
 			generalEvents=query.list();
 		}catch(HibernateException e) {

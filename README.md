@@ -139,5 +139,7 @@ INSERT INTO TypeRequest values(1,'incidente');
 
 INSERT INTO Request values(1,NOW(),'08:00','rgr2228@gmail.com','111','Mi equipo se incendio', 1, 'telefonico', 2, 1 ,'0');
 
+INSERT INTO GeneralEvent values(1,1, NOW(), '08:00', '000000', 'Se usa extintor', 'Daniel');
+
 
 ---------------------------------------------------------------------------------
