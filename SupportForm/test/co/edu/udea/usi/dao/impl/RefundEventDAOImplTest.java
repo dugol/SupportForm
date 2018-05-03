@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.udea.usi.dao.RefundEventDAO;
+import co.edu.udea.usi.dto.MainFrame;
 import co.edu.udea.usi.dto.RefundEvent;
 import co.edu.udea.usi.dto.Request;
 import co.edu.udea.usi.dto.TypeRequest;
@@ -84,28 +85,6 @@ public class RefundEventDAOImplTest {
 		}
 	}
 
-	@Test
-	public void testFindByRequest() {
-		Request request=null;
-		TypeRequest typeRequest=null;
-		User user=null;
-		List<RefundEvent> refundEvents=null;
-		try {
-			refundEvents=new ArrayList<RefundEvent>();
-			request= new Request();
-			typeRequest=new TypeRequest(1,"incidente");
-			request.setTypeRequest(typeRequest);
-			//request.setDate(new Date());
-			request.setUser(new User("rgr228@gmail.com",new TypeUser(1,"administrador"),"Raul"));
-			request.setEventTime("08:00");
-			request.setTypeRequest(typeRequest);
-			request.setIdRequest(1);
-			refundEvents=refundEventDAO.findByRequest(request);
-			assertTrue(refundEvents.size()>0);
-		}catch(UsiDaoException e) {
-			fail(e.getMessage());
-		}
-	}
 /*
 	@Test
 	public void testFindByDate() {

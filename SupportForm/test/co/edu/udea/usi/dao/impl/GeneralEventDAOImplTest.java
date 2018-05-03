@@ -3,7 +3,9 @@ package co.edu.udea.usi.dao.impl;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.Test;
@@ -141,7 +143,9 @@ public class GeneralEventDAOImplTest {
 		List<GeneralEvent> generalEvents=null;
 		try {
 			generalEvents=new ArrayList<GeneralEvent>();
-			generalEvents=generalEventDAO.findByDate(new Date(2018,05,03));
+			Calendar calendar = new GregorianCalendar();
+			calendar.set(2018, 4, 3,0,0,0);
+			generalEvents=generalEventDAO.findByDate(calendar.getTime());
 			assertTrue(generalEvents.size()>0);
 		}catch(UsiDaoException e) {
 			fail(e.getMessage());

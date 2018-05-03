@@ -3,7 +3,9 @@ package co.edu.udea.usi.dao.impl;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.Test;
@@ -48,7 +50,7 @@ public class MaintenanceEventDAOImplTest {
 			maintenanceEvent.setRequest(request);
 			maintenanceEvent.setInterventionType("Prev");
 			maintenanceEvent.setFinalState("OP");
-			maintenanceEvent.setFirstObservation("Tiene daños leves pero funciona correctamente");
+			maintenanceEvent.setFirstObservation("Tiene daï¿½os leves pero funciona correctamente");
 			maintenanceEvent.setProcess("Se limpia la impresora");
 			maintenanceEvent.setFinalState("OP");
 			MaintenanceEventDAO.createMaintenanceEvent(maintenanceEvent);
@@ -151,7 +153,9 @@ public class MaintenanceEventDAOImplTest {
 		List<MaintenanceEvent> maintenanceEvents=null;
 		try {
 			maintenanceEvents=new ArrayList<MaintenanceEvent>();
-			maintenanceEvents=MaintenanceEventDAO.findByDate(new Date());
+			Calendar calendar = new GregorianCalendar();
+			calendar.set(2018, 4, 3,0,0,0);
+			maintenanceEvents=MaintenanceEventDAO.findByDate(calendar.getTime());
 			assertTrue(maintenanceEvents.size()>0);
 		}catch(UsiDaoException e) {
 			fail(e.getMessage());

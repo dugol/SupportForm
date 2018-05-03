@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.Test;
@@ -87,7 +88,9 @@ public class RequestDAOImplTest {
 		List<Request> requests = null;
 		try{
 			requests = new ArrayList<Request>();
-			requests = requestDAO.findByDate(new Date(2018,05,03));
+			Calendar calendar = new GregorianCalendar();
+			calendar.set(2018, 4, 3,0,0,0);
+			requests = requestDAO.findByDate(calendar.getTime());
 			assertTrue(requests.size()>0);
 		}catch(UsiDaoException e) {
 			e.printStackTrace();
@@ -139,7 +142,7 @@ public class RequestDAOImplTest {
 		List<Request> requests = null;
 		try{
 			requests = new ArrayList<Request>();
-			requests = requestDAO.findByState('p');
+			requests = requestDAO.findByState('0');
 			assertTrue(requests.size()>0);
 		}catch(UsiDaoException e) {
 			e.printStackTrace();

@@ -79,23 +79,6 @@ public class RefundEventDAOImpl extends HibernateDaoSupport implements RefundEve
 		return refundEvent;
 	}
 
-	@Override
-	public List<RefundEvent> findByRequest(Request request) throws UsiDaoException {
-		Session session=null;
-		List<RefundEvent> refundEvents=null;
-		try {
-			session=this.getSessionFactory().getCurrentSession();
-			refundEvents=new ArrayList<RefundEvent>();
-			Query query=session.createQuery("from RefundEvent where request=:request");
-			query.setParameter("request", request);
-			refundEvents=query.list();
-			
-		}catch(HibernateException e) {
-			throw new UsiDaoException(e);
-		}
-		
-		return refundEvents;
-	}
 
 	@Override
 	public List<RefundEvent> findByDate(Date date) throws UsiDaoException {
