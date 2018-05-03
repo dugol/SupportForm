@@ -129,7 +129,7 @@ state varchar(15),
 observation varchar(80),
 primary key(idReEvent));
 
-INSERT INTO TypeUser values(1,'administrador')
+INSERT INTO TypeUser values(1,'administrador');
 
 INSERT INTO MainFrame values('000000','G32M','SURE','0000000','Intel core i3',8,'500GB','G32M');
 
@@ -141,7 +141,7 @@ INSERT INTO Request values(1,NOW(),'08:00','rgr2228@gmail.com','111','Mi equipo 
 
 INSERT INTO GeneralEvent values(1,1, NOW(), '08:00', '000000', 'Se usa extintor', 'Daniel');
 
-INSERT INTO MaintenanceEvent values(1,1,NOW(),'000000','Prev','OP','Tiene daños leves pero funciona correctamente','Se limpia la impresora','OP','','Daniel');
+INSERT INTO MaintenanceEvent values(1,1,NOW(),'000000','Prev','OP','Tiene daÃ±os leves pero funciona correctamente','Se limpia la impresora','OP','','Daniel');
 
 INSERT INTO ModificationEvent values(1,1,NOW(),'000000','Bateria', '','','','','Daniel');
 
