@@ -104,8 +104,8 @@ public class ModificationEventDAOImpl extends HibernateDaoSupport implements Mod
 		try {
 			session=this.getSessionFactory().getCurrentSession();
 			modificationEvents=new ArrayList<ModificationEvent>();
-			Query query=session.createQuery("from ModificationEvent where administrador=:administrador");
-			query.setParameter("administrador", admin);
+			Query query=session.createQuery("from ModificationEvent where administrator=:administrator");
+			query.setParameter("administrator", admin);
 			modificationEvents=query.list();
 			
 		}catch(HibernateException e) {

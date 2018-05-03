@@ -143,5 +143,9 @@ INSERT INTO GeneralEvent values(1,1, NOW(), '08:00', '000000', 'Se usa extintor'
 
 INSERT INTO MaintenanceEvent values(1,1,NOW(),'000000','Prev','OP','Tiene daños leves pero funciona correctamente','Se limpia la impresora','OP','','Daniel');
 
+INSERT INTO ModificationEvent values(1,1,NOW(),'000000','Bateria', '','','','','Daniel');
+
+INSERT INTO RefundEvent values(1,NOW(),'000000','PCE',1,'','Funcional','');
+
 
 ---------------------------------------------------------------------------------
