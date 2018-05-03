@@ -129,7 +129,15 @@ state varchar(15),
 observation varchar(80),
 primary key(idReEvent));
 
+INSERT INTO TypeUser values(1,'administrador')
+
 INSERT INTO MainFrame values('000000','G32M','SURE','0000000','Intel core i3',8,'500GB','G32M');
 
 insert into User values('rgr2228@gmail.com',1,'Raul','','0000000','','12345');
+
+INSERT INTO TypeRequest values(1,'incidente');
+
+INSERT INTO Request values(1,NOW(),'08:00','rgr2228@gmail.com','111','Mi equipo se incendio', 1, 'telefonico', 2, 1 ,'0');
+
+
 ---------------------------------------------------------------------------------
