@@ -1,7 +1,11 @@
 package co.edu.udea.usi.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.usi.dao.TypeUserDAO;
@@ -16,20 +20,41 @@ public class TypeUserDAOImpl extends HibernateDaoSupport implements TypeUserDAO 
 
 	@Override
 	public TypeUser createTyperUser(TypeUser typeUser) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		try{
+			session = this.getSessionFactory().getCurrentSession();
+			session.save(typeUser);
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		return typeUser;
 	}
 
 	@Override
 	public TypeUser modificateTypeUser(TypeUser typeUser) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		try{
+			session = this.getSessionFactory().getCurrentSession();
+			session.update(typeUser);
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		return typeUser;
 	}
 
 	@Override
 	public List<TypeUser> findAllTypeUser() throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		List<TypeUser> typeUsers = null;
+		try{
+			typeUsers = new ArrayList<TypeUser>();
+			session = this.getSessionFactory().getCurrentSession();
+			Criteria criteria =session.createCriteria(TypeUser.class);
+			typeUsers = criteria.list();
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		return typeUsers;
 	}
 
 }

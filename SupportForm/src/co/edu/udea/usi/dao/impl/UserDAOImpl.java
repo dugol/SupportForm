@@ -23,14 +23,27 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 
 	@Override
 	public User createUser(User user) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		try{
+			session = this.getSessionFactory().getCurrentSession();
+			session.save(user);
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		
+		return user;
 	}
 
 	@Override
 	public User modificateUser(User user) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		try{
+			session = this.getSessionFactory().getCurrentSession();
+			session.update(user);
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		return user;
 	}
 
 	@Override
@@ -50,8 +63,16 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 
 	@Override
 	public User findByEmail(String email) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		User user = null;
+		Session session = null;
+		try{
+			session = this.getSessionFactory().getCurrentSession();
+			user = (User)session.get(User.class, email);
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		
+		return user;
 	}
 
 	@Override
@@ -72,20 +93,48 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 
 	@Override
 	public User findByMainFrame(MainFrame mainFrame) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		User user = null;
+		try{
+			session = this.getSessionFactory().getCurrentSession();
+			Query query = session.createQuery("from User where mainFrame=:mainFrame");
+			query.setParameter("mainFrame",mainFrame);
+			user = (User) query.uniqueResult();
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		return user;
 	}
 
 	@Override
 	public User findByName(String name) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		User user = null;
+		try{
+			session = this.getSessionFactory().getCurrentSession();
+			Query query = session.createQuery("from User where name=:name");
+			query.setParameter("name",name);
+			user = (User) query.uniqueResult();
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		return user;
 	}
 
 	@Override
 	public List<User> findByOffice(String office) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		List<User> users = null;
+		try {
+			users = new ArrayList<User>();
+			session = this.getSessionFactory().getCurrentSession();
+			Query query = session.createQuery("from User where office=:office");
+			query.setParameter("office",office);
+			users = query.list();
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		return users;
 	}
 
 }

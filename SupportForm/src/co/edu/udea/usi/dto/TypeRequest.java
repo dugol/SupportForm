@@ -16,7 +16,8 @@ public class TypeRequest implements java.io.Serializable {
 	public TypeRequest() {
 	}
 
-	public TypeRequest(String name) {
+	public TypeRequest(Integer idTypeRequest, String name) {
+		this.idTypeRequest = idTypeRequest;
 		this.name = name;
 	}
 

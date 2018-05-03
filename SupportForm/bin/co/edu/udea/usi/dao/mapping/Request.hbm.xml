@@ -9,7 +9,7 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="typeRequest" class="co.edu.udea.usi.dto.TypeRequest" fetch="join">
-            <column name="TYPEREQUEST" />
+            <column name="TYPE" />
         </many-to-one>
         <many-to-one name="user" class="co.edu.udea.usi.dto.User" fetch="join">
             <column name="USER" />
@@ -38,45 +38,5 @@
         <property name="state" type="java.lang.Character">
             <column name="STATE" />
         </property>
-        <set name="maintenanceEvents" table="REQUEST" inverse="false" lazy="true">
-            <key>
-                <column name="IDREQUEST" />
-            </key>
-            <element type="string">
-                <column name="MAINTENANCEEVENTS" />
-            </element>
-        </set>
-        <set name="transferEvents" table="REQUEST" inverse="false" lazy="true">
-            <key>
-                <column name="IDREQUEST" />
-            </key>
-            <element type="string">
-                <column name="TRANSFEREVENTS" />
-            </element>
-        </set>
-        <set name="sharedEvents" table="REQUEST" inverse="false" lazy="true">
-            <key>
-                <column name="IDREQUEST" />
-            </key>
-            <element type="string">
-                <column name="SHAREDEVENTS" />
-            </element>
-        </set>
-        <set name="generalEvents" table="REQUEST" inverse="false" lazy="true">
-            <key>
-                <column name="IDREQUEST" />
-            </key>
-            <element type="string">
-                <column name="GENERALEVENTS" />
-            </element>
-        </set>
-        <set name="modificationEvents" table="REQUEST" inverse="false" lazy="true">
-            <key>
-                <column name="IDREQUEST" />
-            </key>
-            <element type="string">
-                <column name="MODIFICATIONEVENTS" />
-            </element>
-        </set>
     </class>
 </hibernate-mapping>
