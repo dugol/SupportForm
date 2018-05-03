@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.udea.usi.dao.GeneralEventDAO;
+import co.edu.udea.usi.dto.GeneralEvent;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring.cfg.xml")
@@ -21,6 +22,11 @@ public class GeneralEventDAOImplTest {
 
 	@Test
 	public void testCreateGeneralEvent() {
+		
+		GeneralEvent generalEvent =null;
+		try {
+			generalEvent=new GeneralEvent();
+		}
 		
 	}
 

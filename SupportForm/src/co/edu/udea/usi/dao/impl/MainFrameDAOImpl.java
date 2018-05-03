@@ -1,7 +1,11 @@
 package co.edu.udea.usi.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.usi.dao.MainFrameDAO;
@@ -16,20 +20,44 @@ public class MainFrameDAOImpl extends HibernateDaoSupport implements MainFrameDA
 
 	@Override
 	public MainFrame createMainFrame(MainFrame mainFrame) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		try {
+			session = this.getSessionFactory().getCurrentSession();
+			session.save(mainFrame);
+		} catch (HibernateException e) {
+			throw new UsiDaoException(e);
+		}
+
+		return mainFrame;
 	}
 
 	@Override
 	public MainFrame modificateMainFrame(MainFrame mainFrame) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		try {
+			session = this.getSessionFactory().getCurrentSession();
+			session.update(mainFrame);
+		} catch (HibernateException e) {
+			throw new UsiDaoException(e);
+		}
+
+		return mainFrame;
 	}
 
 	@Override
 	public List<MainFrame> findAllMainFrame() throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Session session=null;
+		List<MainFrame> mainFrames=null;
+		try {
+			session=this.getSessionFactory().getCurrentSession();
+			mainFrames=new ArrayList<MainFrame>();
+			Criteria criteria=session.createCriteria(MainFrame.class);
+			mainFrames=criteria.list();
+			
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		return mainFrames;
 	}
 
 }
