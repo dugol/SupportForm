@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.usi.dao.GeneralEventDAO;
@@ -84,8 +85,9 @@ public class GeneralEventDAOImpl extends HibernateDaoSupport implements GeneralE
 		try {
 			generalEvents=new ArrayList<GeneralEvent>();
 			session=this.getSessionFactory().getCurrentSession();
-			Query query=session.createQuery("from GeneralEvent where administrador=:administrador");
-			query.setParameter("administrador", admin);
+			Query query=session.createQuery("from GeneralEvent where administrator=:administrator");
+			query.setParameter("administrator", admin);
+			//Criteria criteria=session.createCriteria(GeneralEvent.class).add(Restrictions.eq("administrador", admin));
 			generalEvents=query.list();
 		}catch(HibernateException e) {
 			throw new UsiDaoException();

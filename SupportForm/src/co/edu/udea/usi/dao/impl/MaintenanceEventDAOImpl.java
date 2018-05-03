@@ -104,8 +104,8 @@ public class MaintenanceEventDAOImpl extends HibernateDaoSupport implements Main
 		try {
 			session=this.getSessionFactory().getCurrentSession();
 			maintenanceEvents=new ArrayList<MaintenanceEvent>();
-			Query query=session.createQuery("from MaintenanceEvent where administrador=:administrador");
-			query.setParameter("administrador", admin);
+			Query query=session.createQuery("from MaintenanceEvent where administrator=:administrator");
+			query.setParameter("administrator", admin);
 			maintenanceEvents=query.list();
 			
 		}catch(HibernateException e) {

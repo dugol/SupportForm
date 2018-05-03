@@ -135,15 +135,29 @@ public class GeneralEventDAOImplTest {
 			fail(e.getMessage());
 		}
 	}
-/*
+
 	@Test
 	public void testFindByDate() {
-		fail("Not yet implemented");
+		List<GeneralEvent> generalEvents=null;
+		try {
+			generalEvents=new ArrayList<GeneralEvent>();
+			generalEvents=generalEventDAO.findByDate(new Date(2018,05,03));
+			assertTrue(generalEvents.size()>0);
+		}catch(UsiDaoException e) {
+			fail(e.getMessage());
+		}
 	}
 
 	@Test
 	public void testFindByStockNumber() {
-		fail("Not yet implemented");
+		List<GeneralEvent> generalEvents=null;
+		try {
+			generalEvents=new ArrayList<GeneralEvent>();
+			generalEvents=generalEventDAO.findByStockNumber("000000");
+			assertTrue(generalEvents.size()>0);
+		}catch(UsiDaoException e) {
+			fail(e.getMessage());
+		}
 	}
-*/
+
 }

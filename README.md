@@ -141,5 +141,7 @@ INSERT INTO Request values(1,NOW(),'08:00','rgr2228@gmail.com','111','Mi equipo 
 
 INSERT INTO GeneralEvent values(1,1, NOW(), '08:00', '000000', 'Se usa extintor', 'Daniel');
 
+INSERT INTO MaintenanceEvent values(1,1,NOW(),'000000','Prev','OP','Tiene daños leves pero funciona correctamente','Se limpia la impresora','OP','','Daniel');
+
 
 ---------------------------------------------------------------------------------
