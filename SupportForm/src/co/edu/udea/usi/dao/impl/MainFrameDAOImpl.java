@@ -60,4 +60,17 @@ public class MainFrameDAOImpl extends HibernateDaoSupport implements MainFrameDA
 		return mainFrames;
 	}
 
+	@Override
+	public MainFrame findBySerial(String serialNumber) throws UsiDaoException {
+		MainFrame mainFrame = null;
+		Session session = null;
+		try{
+			session = this.getSessionFactory().getCurrentSession();
+			mainFrame = (MainFrame) session.get(MainFrame.class,serialNumber);
+			}catch(HibernateException e){
+				throw new UsiDaoException(e);
+			}
+		return mainFrame;
+	}
+
 }

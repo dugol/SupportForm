@@ -2,6 +2,9 @@ package co.edu.udea.usi.bl.impl;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.udea.usi.bl.UserBL;
+import co.edu.udea.usi.dto.User;
+import co.edu.udea.usi.exception.UsiDaoException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring.cfg.xml")
@@ -20,52 +25,114 @@ public class UserBLImplTest {
 	
 	@Test
 	public void testCreateUser() {
-		fail("Not yet implemented");
+		try{
+			userBL.createUser("dugol@gmail.com", "administrador", "Daniel", "33-100", 
+					"0000000", "3148523", "12345");
+		}catch(UsiDaoException e){
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
 	}
-
+	
 	@Test
 	public void testLogin() {
-		fail("Not yet implemented");
+		try{
+			userBL.login("rgr2228@gmail.com","12345");
+		}catch(UsiDaoException e){
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
 	}
-
+	/*
 	@Test
 	public void testModificateUser() {
 		fail("Not yet implemented");
 	}
-
+*/
 	@Test
 	public void testModificateUserPass() {
-		fail("Not yet implemented");
+		try{
+			userBL.modificateUserPass("rgr2228@gmail.com", "12345", "123", "123");
+		}catch(UsiDaoException e){
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
 	}
 
 	@Test
 	public void testFindAllUser() {
-		fail("Not yet implemented");
+		List<User> users = null;
+		try{
+			users = new ArrayList<User>();
+			users = userBL.findAllUser();
+			assertTrue(users.size()>0);
+		}catch(UsiDaoException e){
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
 	}
+
+	
 
 	@Test
 	public void testFindByEmail() {
-		fail("Not yet implemented");
+		User user = null;
+		try{
+			user = userBL.findByEmail("rgr2228@gmail.com");
+			assertNotNull(user);
+		}catch(UsiDaoException e){
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
 	}
 
 	@Test
 	public void testFindByType() {
-		fail("Not yet implemented");
+		List<User> users = null;
+		try{
+			users = new ArrayList<User>();
+			users = userBL.findByType("administrador");
+			assertTrue(users.size()>0);
+		}catch(UsiDaoException e){
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
 	}
 
 	@Test
 	public void testFindByMainFrame() {
-		fail("Not yet implemented");
+		User user = null;
+		try{
+			user = userBL.findByMainFrame("0000000");
+			assertNotNull(user);
+		}catch(UsiDaoException e){
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
 	}
 
 	@Test
 	public void testFindByName() {
-		fail("Not yet implemented");
+		User user = null;
+		try{
+			user = userBL.findByName("Raul");
+			assertNotNull(user);
+		}catch(UsiDaoException e){
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
 	}
 
 	@Test
 	public void testFindByOffice() {
-		fail("Not yet implemented");
+		List<User> users = null;
+		try{
+			users = new ArrayList<User>();
+			users = userBL.findByOffice("33-100");
+			assertTrue(users.size()>0);
+		}catch(UsiDaoException e){
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
 	}
-
 }

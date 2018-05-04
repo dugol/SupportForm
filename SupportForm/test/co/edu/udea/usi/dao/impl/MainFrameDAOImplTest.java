@@ -81,5 +81,17 @@ public class MainFrameDAOImplTest {
 			fail(e.getMessage());
 		}
 	}
+	
+	@Test
+	public void testFindBySerial() {
+		MainFrame mainFrame = null;
+		try{
+			mainFrame = mainFrameDAO.findBySerial("0000000");
+			assertNotNull(mainFrame);
+		}catch(UsiDaoException e) {
+			fail(e.getMessage());
+		}
+	}
+	
 
 }
