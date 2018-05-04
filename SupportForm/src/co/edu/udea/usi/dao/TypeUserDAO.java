@@ -9,5 +9,5 @@ public interface TypeUserDAO {
 	public TypeUser createTyperUser(TypeUser typeUser) throws UsiDaoException;
 	public TypeUser modificateTypeUser(TypeUser typeUser) throws UsiDaoException;
 	public List<TypeUser> findAllTypeUser() throws UsiDaoException;
-
+	public TypeUser findByName(String name)throws UsiDaoException;
 }

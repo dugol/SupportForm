@@ -59,5 +59,17 @@ public class TypeUserDAOImplTest {
 			fail(e.getMessage());
 		}
 	}
+	
+	@Test
+	public void testByName(){
+		TypeUser typeUser = null;
+		try{
+			typeUser = typeUserDAO.findByName("administrador");
+			assertNotNull(typeUser);
+		}catch(UsiDaoException e) {
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
+	}
 
 }

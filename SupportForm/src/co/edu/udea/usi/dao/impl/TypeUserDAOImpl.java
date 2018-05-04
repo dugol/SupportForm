@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -55,6 +56,21 @@ public class TypeUserDAOImpl extends HibernateDaoSupport implements TypeUserDAO 
 			throw new UsiDaoException(e);
 		}
 		return typeUsers;
+	}
+
+	@Override
+	public TypeUser findByName(String name) throws UsiDaoException {
+		Session session = null;
+		TypeUser typeUser = null;
+		try{
+			session = this.getSessionFactory().getCurrentSession();
+			Query query = session.createQuery("from TypeUser where name=:name");
+			query.setParameter("name",name);
+			typeUser = (TypeUser) query.uniqueResult();
+		}catch(HibernateException e){
+			throw new UsiDaoException(e);
+		}
+		return typeUser;
 	}
 
 }

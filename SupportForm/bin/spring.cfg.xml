@@ -73,5 +73,12 @@
 	<bean id="userDao" class="co.edu.udea.usi.dao.impl.UserDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	
+	<bean id="typeUserBL" class="co.edu.udea.usi.bl.impl.TypeUserBLImpl">
+	</bean>
+	<bean id="typeRequestBL" class="co.edu.udea.usi.bl.impl.TypeRequestBLImpl">
+	</bean>
+	<bean id="userBL" class="co.edu.udea.usi.bl.impl.UserBLImpl">
+	</bean>
 
 </beans>
