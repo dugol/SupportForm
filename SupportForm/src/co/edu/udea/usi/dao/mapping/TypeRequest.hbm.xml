@@ -11,13 +11,5 @@
         <property name="name" type="java.lang.String">
             <column name="NAME" />
         </property>
-        <set name="requests" table="TYPEREQUEST" inverse="false" lazy="true">
-            <key>
-                <column name="IDTYPEREQUEST" />
-            </key>
-            <element type="string">
-                <column name="REQUESTS" />
-            </element>
-        </set>
     </class>
 </hibernate-mapping>

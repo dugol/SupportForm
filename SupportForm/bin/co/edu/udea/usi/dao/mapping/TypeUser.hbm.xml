@@ -11,13 +11,5 @@
         <property name="name" type="java.lang.String">
             <column name="NAME" />
         </property>
-        <set name="users" table="TYPEUSER" inverse="false" lazy="true">
-            <key>
-                <column name="IDTYPEUSER" />
-            </key>
-            <element type="string">
-                <column name="USERS" />
-            </element>
-        </set>
     </class>
 </hibernate-mapping>
