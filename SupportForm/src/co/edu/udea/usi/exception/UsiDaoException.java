@@ -1,5 +1,10 @@
 package co.edu.udea.usi.exception;
 
+/**
+ * Clase para el manejo de excepciones.
+ * @author Daniel Uribe Giraldo
+ *
+ */
 public class UsiDaoException extends Exception {
 
 	public UsiDaoException() {

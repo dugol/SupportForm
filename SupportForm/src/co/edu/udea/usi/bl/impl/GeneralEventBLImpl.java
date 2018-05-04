@@ -15,7 +15,11 @@ import co.edu.udea.usi.dto.MainFrame;
 import co.edu.udea.usi.dto.Request;
 import co.edu.udea.usi.exception.UsiDaoException;
 import co.edu.udea.usi.util.validations.Validaciones;
-
+/**
+ * clase encargada de la implementacion del crud de evento general.
+ * @author Daniel Uribe Giraldo y Raul Andres Gomez.
+ *
+ */
 public class GeneralEventBLImpl implements GeneralEventBL {
 	@Autowired
 	RequestDAO requestDAO;
