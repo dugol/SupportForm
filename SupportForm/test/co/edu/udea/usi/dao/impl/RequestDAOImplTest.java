@@ -142,7 +142,7 @@ public class RequestDAOImplTest {
 		List<Request> requests = null;
 		try{
 			requests = new ArrayList<Request>();
-			requests = requestDAO.findByState('0');
+			requests = requestDAO.findByState('p');
 			assertTrue(requests.size()>0);
 		}catch(UsiDaoException e) {
 			e.printStackTrace();

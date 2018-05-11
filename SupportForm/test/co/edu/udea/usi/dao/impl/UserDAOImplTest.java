@@ -112,10 +112,11 @@ public class UserDAOImplTest {
 
 	@Test
 	public void testFindByName() {
-		User user = null;
+		List<User> users = null;
 		try {
-			user = userDAO.findByName("Raul");
-			assertNotNull(user);
+			users = new ArrayList<User>();
+			users = userDAO.findByName("Raul");
+			assertTrue(users.size()>0);
 		}catch(UsiDaoException e) {
 			e.printStackTrace();
 			fail(e.getMessage());

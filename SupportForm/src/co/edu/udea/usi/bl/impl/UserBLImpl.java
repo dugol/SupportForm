@@ -33,8 +33,8 @@ public class UserBLImpl implements UserBL {
 		User user = null;
 		TypeUser typeUser1 = null;
 		MainFrame mainFrame1 = null;
-		if(Validaciones.isTextoVacio(email)) {
-			throw new UsiDaoException("El email no puede ser vacío");
+		if(!Validaciones.isEmail(email)) {
+			throw new UsiDaoException("El email debe tener el formato correcto");
 		}
 		user = userDAO.findByEmail(email);
 		if(user!=null){
@@ -88,8 +88,49 @@ public class UserBLImpl implements UserBL {
 
 	@Override
 	public User modificateUser(String email,String typeUser,String name, String office, String mainFrame, String phoneNumber, String password) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		User user = null;
+		TypeUser typeUser1 = null;
+		MainFrame mainFrame1 = null;
+		if(!Validaciones.isEmail(email)){
+			throw new UsiDaoException("Usuario no autentificado");
+		}
+		user = userDAO.findByEmail(email);
+		if(user==null){
+			throw new UsiDaoException("Usuario no autentificado");
+		}
+		if(Validaciones.isTextoVacio(typeUser)) {
+			throw new UsiDaoException("El tipo de usuario no puede ser vacío");
+		}
+		if(Validaciones.isTextoVacio(name)) {
+			throw new UsiDaoException("El nombre no puede ser vacío");
+		}
+		if(Validaciones.isTextoVacio(office)) {
+			throw new UsiDaoException("La oficina no puede ser vacío");
+		}
+		if(Validaciones.isTextoVacio(mainFrame)) {
+			throw new UsiDaoException("El equipo no puede ser vacío");
+		}
+		if(Validaciones.isTextoVacio(phoneNumber)) {
+			throw new UsiDaoException("El teléfono no puede ser vacío");
+		}
+		if(Validaciones.isTextoVacio(password)) {
+			throw new UsiDaoException("La contraseña no puede ser vacía");
+		}
+		typeUser1 = typeUserDAO.findByName(typeUser);
+		mainFrame1 = mainFrameDAO.findBySerial(mainFrame);
+		if(typeUser1 == null){
+			throw new UsiDaoException("Tipo usuario inválido");
+		}
+		if(mainFrame1 == null){
+			throw new UsiDaoException("Equipo inválido");
+		}
+		user.setMainFrame(mainFrame1);
+		user.setName(name);
+		user.setOffice(office);
+		user.setPassword(password);
+		user.setPhoneNumber(phoneNumber);
+		user.setTypeUser(typeUser1);
+		return userDAO.modificateUser(user);
 	}
 
 	@Override
@@ -166,16 +207,17 @@ public class UserBLImpl implements UserBL {
 	}
 
 	@Override
-	public User findByName(String name) throws UsiDaoException {
-		User user = null;
+	public List<User> findByName(String name) throws UsiDaoException {
+		List<User> users = null;
 		if(Validaciones.isTextoVacio(name)){
 			throw new UsiDaoException("El nombre no puede estar vacío");
 		}
-		user = userDAO.findByName(name);
-		if(user == null){
+		users = new ArrayList<User>();
+		users = userDAO.findByName(name);
+		if(users == null){
 			throw new UsiDaoException("Usuario no encontrado");
 		}
-		return user;
+		return users;
 	}
 
 	@Override
@@ -184,6 +226,7 @@ public class UserBLImpl implements UserBL {
 		if(Validaciones.isTextoVacio(office)){
 			throw new UsiDaoException("La oficina no puede estar vacío");
 		}
+		users = new ArrayList<User>();
 		users = userDAO.findByOffice(office);
 		if(users == null){
 			throw new UsiDaoException("Usuario no encontrado");

@@ -107,18 +107,19 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 	}
 
 	@Override
-	public User findByName(String name) throws UsiDaoException {
+	public List<User> findByName(String name) throws UsiDaoException {
 		Session session = null;
-		User user = null;
+		List<User> users = null;
 		try{
+			users = new ArrayList<User>();
 			session = this.getSessionFactory().getCurrentSession();
 			Query query = session.createQuery("from User where name=:name");
 			query.setParameter("name",name);
-			user = (User) query.uniqueResult();
+			users = query.list();
 		}catch(HibernateException e){
 			throw new UsiDaoException(e);
 		}
-		return user;
+		return users;
 	}
 
 	@Override

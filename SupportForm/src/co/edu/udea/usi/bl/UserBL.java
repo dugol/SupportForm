@@ -83,7 +83,7 @@ public interface UserBL {
 	 * @return Instancia del usuario
 	 * @throws UsiDaoException Ocurre un error con la conexión.
 	 */
-	public User findByName(String name) throws UsiDaoException;
+	public List<User> findByName(String name) throws UsiDaoException;
 	
 	/**
 	 * Devuelve los usuarios pertenecientes a una determinada oficina

@@ -43,12 +43,18 @@ public class UserBLImplTest {
 			fail(e.getMessage());
 		}
 	}
-	/*
+
 	@Test
 	public void testModificateUser() {
-		fail("Not yet implemented");
+		try{
+			userBL.modificateUser("rgr2228@gmail.com", "administrador", "Andres", "33-100", 
+					"0000000", "3148523", "12345");
+		}catch(UsiDaoException e){
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
 	}
-*/
+	
 	@Test
 	public void testModificateUserPass() {
 		try{
@@ -113,10 +119,11 @@ public class UserBLImplTest {
 
 	@Test
 	public void testFindByName() {
-		User user = null;
+		List<User> users = null;
 		try{
-			user = userBL.findByName("Raul");
-			assertNotNull(user);
+			users = new ArrayList<User>();
+			users = userBL.findByName("Raul");
+			assertTrue(users.size()>0);
 		}catch(UsiDaoException e){
 			e.printStackTrace();
 			fail(e.getMessage());
