@@ -50,7 +50,7 @@ public interface RequestBL {
 	 * @return retorna la solicitud guardada.
 	 * @throws UsiDaoException manejo de exccepciones.
 	 */
-	public Request modificateRequest(int idRequest,Date date,String eventTime,User user,String office,String description,int type,String channel,int priority, int level,char state) throws UsiDaoException;
+	public Request modificateRequest(int idRequest,Date date,String eventTime,User user,String office,String description,TypeRequest typeRequest,String channel,int priority, int level,char state) throws UsiDaoException;
 	/**
 	 * metodo encargado de obtener todas las solicitudes.
 	 * @return retorna todas las solicitudes del sistema.

@@ -46,7 +46,7 @@ public class RequestBLImpl implements RequestBL {
 			throw new UsiDaoException("la descripcion de la solicitud no puede ser vacia");
 		}
 		if(date==null) {
-			throw new UsiDaoException("la hora de la solicitud no puedo ser vacia");
+			date=new Date();
 		}
 		if(user==null) {
 			throw new UsiDaoException("El usuario que realiaza la solicitud debe ser diferente de nulo");
@@ -64,15 +64,40 @@ public class RequestBLImpl implements RequestBL {
 	
 	@Override
 	public Request modificateRequest(int idRequest, Date date, String eventTime, User user, String office,
-			String description, int type, String channel, int priority, int level, char state) throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+			String description, TypeRequest typeRequest, String channel, int priority, int level, char state) throws UsiDaoException {
+		
+		User user1=null;
+		user1=userDAO.findByEmail(user.getEmail());
+		if(user1==null) {
+			throw new UsiDaoException("Usuario inexistente");
+		}
+		if(Validaciones.isTextoVacio(eventTime)) {
+			throw new UsiDaoException("la hora de la solicitud debe ser diferente de vacia");
+		}
+		if(Validaciones.isTextoVacio(channel)) {
+			throw new UsiDaoException("el canal de la solicitud debe ser diferente de vacio");
+		}
+		if(Validaciones.isTextoVacio(description)) {
+			throw new UsiDaoException("la descripcion de la solicitud no puede ser vacia");
+		}
+		if(date==null) {
+			date=new Date();
+		}
+		if(user==null) {
+			throw new UsiDaoException("El usuario que realiaza la solicitud debe ser diferente de nulo");
+		}
+		if(typeRequest==null) {
+			throw new UsiDaoException("El tipo de solicitud no puede nulo");
+		}
+		Request request=new Request(typeRequest,user,date,eventTime,office,description,channel,priority,level,state);
+		requestDAO.modificateRequest(request);
+		return request;
 	}
 
 	@Override
 	public List<Request> findAllRequest() throws UsiDaoException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Request> requestList=requestDAO.findAllRequest();
+		return requestList;
 	}
 
 
