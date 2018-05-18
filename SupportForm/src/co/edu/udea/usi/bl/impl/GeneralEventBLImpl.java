@@ -31,7 +31,7 @@ public class GeneralEventBLImpl implements GeneralEventBL {
 	GeneralEventDAO generalEventDAO;
 
 	@Override
-	public GeneralEvent createGeneralEvent(int idGEvent, Request request, Date date, String eventTime,
+	public GeneralEvent createGeneralEvent(int idGEvent, Request request, String eventTime,
 			String stockNumber, String detail, String administrator) throws UsiDaoException {
 
 		Request request1 = null;
@@ -52,9 +52,7 @@ public class GeneralEventBLImpl implements GeneralEventBL {
 		if (Validaciones.isTextoVacio(detail)) {
 			throw new UsiDaoException("el evento debe tener una descripcion");
 		}
-		if (date == null) {
-			throw new UsiDaoException("La fecha no puede ser un objeto nulo");
-		}
+		Date date = new Date();
 		GeneralEvent generalEvent = new GeneralEvent(request, date, eventTime, stockNumber, detail, administrator);
 		generalEventDAO.createGeneralEvent(generalEvent);
 
