@@ -4,10 +4,13 @@ package co.edu.udea.usi.dto;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Clase para el almacenamiento y entrega de los atributos de un usuario
  * @author Raúl Andrés Gómez Ramírez - raul.gomezr
  */
+@XmlRootElement
 public class User implements java.io.Serializable {
 	
 	/**
