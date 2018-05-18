@@ -27,7 +27,7 @@ public interface GeneralEventBL {
 	 * @return retorna el evento general creado.
 	 * @throws UsiDaoException
 	 */
-	public GeneralEvent createGeneralEvent(int idGEvent,Request request, Date date, String eventTime,String stockNumber,String detail, String administrator) throws UsiDaoException;
+	public GeneralEvent createGeneralEvent(int idGEvent,Request request, String eventTime,String stockNumber,String detail, String administrator) throws UsiDaoException;
 	/**
 	 * Metodo encargado de modificar un evento general
 	 * @param idGEvent identificador del evento
