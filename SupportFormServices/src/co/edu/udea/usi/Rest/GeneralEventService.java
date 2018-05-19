@@ -17,7 +17,7 @@ import co.edu.udea.usi.dto.GeneralEvent;
 import co.edu.udea.usi.dto.Request;
 import co.edu.udea.usi.exception.UsiDaoException;
 
-@Path("GeneralEvent")
+@Path("generalEvent")
 @Component
 public class GeneralEventService {
 	@Autowired

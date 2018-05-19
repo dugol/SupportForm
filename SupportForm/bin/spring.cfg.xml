@@ -84,6 +84,10 @@
 	</bean>
 	<bean id="userBL" class="co.edu.udea.usi.bl.impl.UserBLImpl">
 	</bean>
+	<bean id="requestBL" class="co.edu.udea.usi.bl.impl.RequestBLImpl">
+	</bean>
+	<bean id="generalEventBL" class="co.edu.udea.usi.bl.impl.GeneralEventBLImpl">
+	</bean>
 	
 	<context:component-scan base-package="co.edu.udea.usi.Rest"></context:component-scan>
 	<tx:annotation-driven/>
