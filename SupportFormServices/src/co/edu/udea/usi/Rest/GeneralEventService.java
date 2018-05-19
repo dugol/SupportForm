@@ -25,11 +25,11 @@ public class GeneralEventService {
 	@Autowired
 	private GeneralEventBL generalEventBL;
 	
-	/*
+	
 	@Produces(MediaType.APPLICATION_JSON)
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	//@Path("/save")
+	@Path("/save")
 	public GeneralEvent createGeneralEvent(@QueryParam("idGEvent")int idGEvent,@QueryParam("request")Request request, @QueryParam("eventTime")String eventTime,@QueryParam("stockNumber")String stockNumber,@QueryParam("detail")String detail, @QueryParam("administrator")String administrator)throws RemoteException {
 	
 		GeneralEvent generalEvent=null;
@@ -39,7 +39,7 @@ public class GeneralEventService {
 			throw new RemoteException(e.getMessage());
 		}
 		return generalEvent;	
-	}*/
+	}
 	
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
@@ -47,6 +47,19 @@ public class GeneralEventService {
 		List<GeneralEvent> generalEvents=null;
 		try {
 			generalEvents=generalEventBL.findAllGeneralEvent();
+		}catch(UsiDaoException e) {
+			throw new RemoteException(e.getMessage());
+		}
+		return generalEvents;
+	}
+	
+	@Produces(MediaType.APPLICATION_JSON)
+	@GET
+	@Path("/admin")
+	public List<GeneralEvent> findByAdmin(@QueryParam("admin")String admin) throws RemoteException{
+		List<GeneralEvent> generalEvents=null;
+		try {
+			generalEvents=generalEventBL.findByAdmin(admin);
 		}catch(UsiDaoException e) {
 			throw new RemoteException(e.getMessage());
 		}

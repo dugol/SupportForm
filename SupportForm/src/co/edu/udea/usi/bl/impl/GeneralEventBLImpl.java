@@ -38,6 +38,7 @@ public class GeneralEventBLImpl implements GeneralEventBL {
 			String stockNumber, String detail, String administrator) throws UsiDaoException {
 
 		Request request1 = null;
+		System.out.println(request.getIdRequest().toString());
 
 		request1 = requestDAO.findById(request.getIdRequest());
 		if (request1 == null) {

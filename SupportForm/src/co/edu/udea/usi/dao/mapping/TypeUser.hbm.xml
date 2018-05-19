@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Apr 27, 2018 3:33:32 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="co.edu.udea.usi.dto.TypeUser" table="TypeUser">
+    <class name="co.edu.udea.usi.dto.TypeUser" table="TypeUser" lazy="false">
         <id name="idTypeUser" type="int">
             <column name="IDTYPEUSER" />
             <generator class="assigned" />

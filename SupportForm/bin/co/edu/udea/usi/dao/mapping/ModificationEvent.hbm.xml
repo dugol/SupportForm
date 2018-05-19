@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Apr 27, 2018 3:33:32 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="co.edu.udea.usi.dto.ModificationEvent" table="ModificationEvent">
+    <class name="co.edu.udea.usi.dto.ModificationEvent" table="ModificationEvent" lazy="false">
         <id name="idMEvent" type="java.lang.Integer">
             <column name="IDMEVENT" />
             <generator class="assigned" />
