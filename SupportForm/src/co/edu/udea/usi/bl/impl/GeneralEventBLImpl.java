@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import co.edu.udea.usi.bl.GeneralEventBL;
@@ -20,6 +22,7 @@ import co.edu.udea.usi.util.validations.Validaciones;
  * @author Daniel Uribe Giraldo y Raul Andres Gomez.
  *
  */
+
 public class GeneralEventBLImpl implements GeneralEventBL {
 	@Autowired
 	RequestDAO requestDAO;

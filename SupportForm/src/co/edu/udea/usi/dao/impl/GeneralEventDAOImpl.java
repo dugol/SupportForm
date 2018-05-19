@@ -10,12 +10,14 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.udea.usi.dao.GeneralEventDAO;
 import co.edu.udea.usi.dto.GeneralEvent;
 import co.edu.udea.usi.dto.Request;
 import co.edu.udea.usi.exception.UsiDaoException;
 
+@Transactional
 public class GeneralEventDAOImpl extends HibernateDaoSupport implements GeneralEventDAO {
 
 	public GeneralEventDAOImpl() {

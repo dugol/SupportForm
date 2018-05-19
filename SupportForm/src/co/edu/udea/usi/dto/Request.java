@@ -3,11 +3,14 @@ package co.edu.udea.usi.dto;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 
 /**
  * Clase para el almacenamiento y entrega de los atributos de una solicitud
  * @author Raúl Andrés Gómez Ramírez - raul.gomezr
  */
+@XmlRootElement
 public class Request implements java.io.Serializable {
 	
 	/**
