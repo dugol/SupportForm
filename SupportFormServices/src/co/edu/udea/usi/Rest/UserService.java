@@ -20,6 +20,11 @@ import co.edu.udea.usi.dto.User;
 import co.edu.udea.usi.exception.UsiDaoException;
 import co.edu.udea.usi.bl.UserBL;
 
+/**
+ * Clase que define todos los métodos de la lógica de servicios de User
+ * @author Raúl Andrés Gómez Ramírez - raul.gomezr
+ */
+
 @Path("User")
 @Component
 public class UserService {
@@ -27,6 +32,13 @@ public class UserService {
 	@Autowired
 	private UserBL userBL;
 	
+	
+	/**
+	 * Hace la creaciÃ³n de un usuario en el sistema
+	 * @param InformaciÃ³n del usuario a crear
+	 * @return Instancia del usuario creado
+	 * @throws UsiDaoException Ocurre un error con la conexiÃ³n.
+	 */
 	@Produces(MediaType.TEXT_PLAIN)
 	@POST
 	@Path("/create")
