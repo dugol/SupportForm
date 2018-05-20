@@ -11,6 +11,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,9 +27,61 @@ public class UserService {
 	@Autowired
 	private UserBL userBL;
 	
-/*
+	@Produces(MediaType.TEXT_PLAIN)
+	@POST
+	@Path("/create")
+	public String createUser(@QueryParam("email")String email,@QueryParam("typeUser")String typeUser,
+			@QueryParam("name")String name,@QueryParam("office")String office,@QueryParam("mainFrame")String mainFrame,
+			@QueryParam("phoneNumber")String phoneNumber,@QueryParam("password")String password)throws RemoteException{
+		try{
+			userBL.createUser(email, typeUser, name, office, mainFrame, phoneNumber, password);
+		}catch(UsiDaoException e){
+			throw new RemoteException(e.getMessage());
+		}
+		return "";
+	}
+	
+	@Produces(MediaType.TEXT_PLAIN)
+	@POST
+	@Path("/login")
+	public String login(@QueryParam("email")String email,@QueryParam("password")String password)throws RemoteException{
+		try{
+			userBL.login(email, password);
+		}catch(UsiDaoException e){
+			throw new RemoteException(e.getMessage());
+		}
+		return "";
+	}
+	
+	@Produces(MediaType.TEXT_PLAIN)
+	@POST
+	@Path("/modificate")
+	public String modificateUser(@QueryParam("email")String email,@QueryParam("typeUser")String typeUser,
+			@QueryParam("name")String name,@QueryParam("office")String office,@QueryParam("mainFrame")String mainFrame,
+			@QueryParam("phoneNumber")String phoneNumber,@QueryParam("password")String password)throws RemoteException{
+		try{
+			userBL.modificateUser(email, typeUser, name, office, mainFrame, phoneNumber, password);
+		}catch(UsiDaoException e){
+			throw new RemoteException(e.getMessage());
+		}
+		return "";
+	}
+	
+	@Produces(MediaType.TEXT_PLAIN)
+	@POST
+	@Path("/modificatePass")
+	public String modificateUserPass(@QueryParam("email")String email,@QueryParam("oldPassword")String oldPassword,
+			@QueryParam("newPassword")String newPassword,@QueryParam("newPassword2")String newPassword2)throws RemoteException{
+		try{
+			userBL.modificateUserPass(email, oldPassword, newPassword, newPassword2);
+		}catch(UsiDaoException e){
+			throw new RemoteException(e.getMessage());
+		}
+		return "";
+	}
+	
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	@GET
+	@POST
 	public List<User> findAllUser()throws RemoteException{
 		List<User> users = null;
 		try {
@@ -39,10 +92,11 @@ public class UserService {
 		}
 		return users;
 	}
-	*/
-	/*
+	
+	
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	@GET
+	@POST
+	@Path("/email")
 	public User findByEmail(@QueryParam("email")String email)throws RemoteException{
 		User user = null;
 		try {
@@ -51,10 +105,11 @@ public class UserService {
 			throw new RemoteException(e.getMessage());
 		}
 		return user;
-	}*/
-	/*
+	}
+	
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	@GET
+	@POST
+	@Path("/typeUser")
 	public List<User> findByType(@QueryParam("typeUser")String typeUser)throws RemoteException{
 		List<User> users = null;
 		try {
@@ -65,10 +120,11 @@ public class UserService {
 		}
 		return users;
 	}
-		*/
-/*
+		
+
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	@GET
+	@POST
+	@Path("/mainFrame")
 	public User findByMainFrame(@QueryParam("mainFrame")String mainFrame)throws RemoteException{
 		User user= null;
 		try {
@@ -78,10 +134,11 @@ public class UserService {
 		}
 		return user;
 	}
-*/
+
 
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	@GET
+	@POST
+	@Path("/name")
 	public List<User> findByName(@QueryParam("name")String name)throws RemoteException{
 		List<User> users = null;
 		try {
@@ -92,10 +149,11 @@ public class UserService {
 		}
 		return users;
 	}
-	/*
+	
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	@GET
-	public List<User> findByOffice(String office)throws RemoteException{
+	@POST
+	@Path("/office")
+	public List<User> findByOffice(@QueryParam("office")String office)throws RemoteException{
 		List<User> users = null;
 		try {
 			users = new ArrayList<User>();
@@ -105,5 +163,5 @@ public class UserService {
 		}
 		return users;
 	}
-	*/
+	
 }

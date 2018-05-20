@@ -56,7 +56,7 @@ public class GeneralEventService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
 	@Path("/admin")
-	public List<GeneralEvent> findByAdmin(@QueryParam("admin")String admin) throws RemoteException{
+	public List<GeneralEvent> findByAdmin(@QueryParam("admin")String admin,@QueryParam("typeUser")String typeUser) throws RemoteException{
 		List<GeneralEvent> generalEvents=null;
 		try {
 			generalEvents=generalEventBL.findByAdmin(admin);

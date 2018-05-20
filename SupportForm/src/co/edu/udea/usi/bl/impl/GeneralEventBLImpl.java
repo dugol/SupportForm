@@ -7,6 +7,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.udea.usi.bl.GeneralEventBL;
 import co.edu.udea.usi.dao.GeneralEventDAO;
@@ -22,7 +23,7 @@ import co.edu.udea.usi.util.validations.Validaciones;
  * @author Daniel Uribe Giraldo y Raul Andres Gomez.
  *
  */
-
+@Transactional
 public class GeneralEventBLImpl implements GeneralEventBL {
 	@Autowired
 	RequestDAO requestDAO;

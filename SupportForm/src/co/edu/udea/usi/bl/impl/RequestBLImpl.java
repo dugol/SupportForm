@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.udea.usi.bl.RequestBL;
 import co.edu.udea.usi.dao.RequestDAO;
@@ -19,6 +20,7 @@ import co.edu.udea.usi.util.validations.Validaciones;
  * @author Daniel Uribe Giraldo
  *
  */
+@Transactional
 public class RequestBLImpl implements RequestBL {
 
 	@Autowired
