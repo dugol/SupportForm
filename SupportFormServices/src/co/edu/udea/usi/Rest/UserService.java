@@ -34,64 +34,96 @@ public class UserService {
 	
 	
 	/**
-	 * Hace la creaci贸n de un usuario en el sistema
-	 * @param Informaci贸n del usuario a crear
-	 * @return Instancia del usuario creado
+	 * Servicio que hace la creaci髇 de un usuario en el sistema
+	 * @param Informaci髇 del usuario a crear
+	 * @return JSON con la informaci髇 del usuario creado
 	 * @throws UsiDaoException Ocurre un error con la conexi贸n.
 	 */
-	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
 	@Path("/create")
-	public String createUser(@QueryParam("email")String email,@QueryParam("typeUser")String typeUser,
+	public User createUser(@QueryParam("email")String email,@QueryParam("typeUser")String typeUser,
 			@QueryParam("name")String name,@QueryParam("office")String office,@QueryParam("mainFrame")String mainFrame,
 			@QueryParam("phoneNumber")String phoneNumber,@QueryParam("password")String password)throws RemoteException{
+			User user = null;
 		try{
-			userBL.createUser(email, typeUser, name, office, mainFrame, phoneNumber, password);
+			user = userBL.createUser(email, typeUser, name, office, mainFrame, phoneNumber, password);
 		}catch(UsiDaoException e){
 			throw new RemoteException(e.getMessage());
 		}
-		return "";
+		return user;
 	}
 	
-	@Produces(MediaType.TEXT_PLAIN)
+	/**
+	 * Servicio que hace la validaci髇 para el acceso de un usuario en el sistema
+	 * @param email y contrase馻 del usuario a loguearse
+	 * @return JSON con la informaci髇 del usuario logueado
+	 * @throws UsiDaoException Ocurre un error con la conexi贸n.
+	 */
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/login")
-	public String login(@QueryParam("email")String email,@QueryParam("password")String password)throws RemoteException{
+	public User login(@QueryParam("email")String email,@QueryParam("password")String password)throws RemoteException{
+		User user = null;
 		try{
-			userBL.login(email, password);
+			user = userBL.login(email, password);
 		}catch(UsiDaoException e){
 			throw new RemoteException(e.getMessage());
 		}
-		return "";
+		return user;
 	}
 	
-	@Produces(MediaType.TEXT_PLAIN)
+	/**
+	 *Servicio que hace la modificaci髇 de un usuario en el sistema
+	 * @param Informaci髇 a modificar del usuario
+	 * @return JSON con la informaci髇 del usuario modificado
+	 * @throws UsiDaoException Ocurre un error con la conexi贸n.
+	 */
+	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
 	@Path("/modificate")
-	public String modificateUser(@QueryParam("email")String email,@QueryParam("typeUser")String typeUser,
+	public User modificateUser(@QueryParam("email")String email,@QueryParam("typeUser")String typeUser,
 			@QueryParam("name")String name,@QueryParam("office")String office,@QueryParam("mainFrame")String mainFrame,
 			@QueryParam("phoneNumber")String phoneNumber,@QueryParam("password")String password)throws RemoteException{
+			User user = null;
 		try{
-			userBL.modificateUser(email, typeUser, name, office, mainFrame, phoneNumber, password);
+			user = userBL.modificateUser(email, typeUser, name, office, mainFrame, phoneNumber, password);
 		}catch(UsiDaoException e){
 			throw new RemoteException(e.getMessage());
 		}
-		return "";
+		return user;
 	}
 	
-	@Produces(MediaType.TEXT_PLAIN)
+	/**
+	 * Servicio que hace la modificaci髇 de la clave de un usuario
+	 * @param email, contrase馻 actual y contrase馻 nueva de la cuenta del usuario
+	 * @return JSON con la informaci髇 del usuario al que se le ha modificado su clave
+	 * @throws UsiDaoException Ocurre un error con la conexi贸n.
+	 */
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
 	@Path("/modificatePass")
-	public String modificateUserPass(@QueryParam("email")String email,@QueryParam("oldPassword")String oldPassword,
+	public User modificateUserPass(@QueryParam("email")String email,@QueryParam("oldPassword")String oldPassword,
 			@QueryParam("newPassword")String newPassword,@QueryParam("newPassword2")String newPassword2)throws RemoteException{
+			User user = null;
 		try{
-			userBL.modificateUserPass(email, oldPassword, newPassword, newPassword2);
+			user = userBL.modificateUserPass(email, oldPassword, newPassword, newPassword2);
 		}catch(UsiDaoException e){
 			throw new RemoteException(e.getMessage());
 		}
-		return "";
+		return user;
 	}
 	
+	/**
+	 * Servicio que obtiene todos los usuarios que hay en el sistema
+	 * @return Arreglo de JSON con la informaci髇 de todos los usuarios
+	 * @throws UsiDaoException Ocurre un error con la conexi贸n.
+	 */
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
 	public List<User> findAllUser()throws RemoteException{
@@ -105,7 +137,13 @@ public class UserService {
 		return users;
 	}
 	
-	
+	/**
+	 * Servicio que hace la b鷖queda de un usuario en el sistema seg鷑 su email
+	 * @param email del usuario a encontrar
+	 * @return JSON con la informaci髇 del usuario encontrado
+	 * @throws UsiDaoException Ocurre un error con la conexi贸n.
+	 */
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
 	@Path("/email")
@@ -119,6 +157,13 @@ public class UserService {
 		return user;
 	}
 	
+	/**
+	 * Servicio que hace la b鷖queda de uno o varios usuarios en el sistema seg鷑 su tipo de usuario
+	 * @param tipo de usuario de los usuarios a encontrar
+	 * @return Arreglo de JSON con la informaci髇 de los usuarios encontrados
+	 * @throws UsiDaoException Ocurre un error con la conexi贸n.
+	 */
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
 	@Path("/typeUser")
@@ -132,8 +177,14 @@ public class UserService {
 		}
 		return users;
 	}
-		
-
+	
+	/**
+	 * Servicio que hace la b鷖queda de un usuario en el sistema seg鷑 su equipo
+	 * @param serial del equipo del usuario a encontrar
+	 * @return JSON con la informaci髇 del usuario encontrado
+	 * @throws UsiDaoException Ocurre un error con la conexi贸n.
+	 */
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
 	@Path("/mainFrame")
@@ -146,8 +197,14 @@ public class UserService {
 		}
 		return user;
 	}
-
-
+	
+	/**
+	 * Servicio que hace la b鷖queda de un usuario en el sistema seg鷑 su nombre
+	 * @param nombre de los usuarios a encontrar
+	 * @return Arreglo de JSON con la informaci髇 de los usuarios encontrados
+	 * @throws UsiDaoException Ocurre un error con la conexi贸n.
+	 */
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
 	@Path("/name")
@@ -162,6 +219,13 @@ public class UserService {
 		return users;
 	}
 	
+	/**
+	 * Servicio que hace la b鷖queda de uno o varios usuarios en el sistema seg鷑 su oficina
+	 * @param oficina de los usuarios a encontrar
+	 * @return Arreglo de JSON con la informaci髇 de los usuarios encontrados
+	 * @throws UsiDaoException Ocurre un error con la conexi贸n.
+	 */
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
 	@Path("/office")
