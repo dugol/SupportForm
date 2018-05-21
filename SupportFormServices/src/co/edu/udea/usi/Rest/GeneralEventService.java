@@ -1,6 +1,7 @@
 package co.edu.udea.usi.Rest;
 
 import java.rmi.RemoteException;
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -12,6 +13,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import co.edu.udea.usi.bl.GeneralEventBL;
@@ -30,11 +32,12 @@ public class GeneralEventService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/save")
-	public GeneralEvent createGeneralEvent(@QueryParam("idGEvent")int idGEvent,@QueryParam("request")Request request, @QueryParam("eventTime")String eventTime,@QueryParam("stockNumber")String stockNumber,@QueryParam("detail")String detail, @QueryParam("administrator")String administrator)throws RemoteException {
+	public GeneralEvent createGeneralEvent(GeneralEvent generalEvent)throws RemoteException {
 	
-		GeneralEvent generalEvent=null;
+		//GeneralEvent generalEvent=null;
 		try {
-			generalEvent=generalEventBL.createGeneralEvent(idGEvent, request, eventTime, stockNumber, detail, administrator);
+			System.out.println(generalEvent.getAdministrator());
+			generalEvent=generalEventBL.createGeneralEvent(generalEvent.getIdGEvent(), generalEvent.getRequest(), generalEvent.getEventTime(), generalEvent.getStockNumber(), generalEvent.getDetail(), generalEvent.getAdministrator());
 		}catch(UsiDaoException e) {
 			throw new RemoteException(e.getMessage());
 		}
@@ -56,10 +59,35 @@ public class GeneralEventService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
 	@Path("/admin")
-	public List<GeneralEvent> findByAdmin(@QueryParam("admin")String admin,@QueryParam("typeUser")String typeUser) throws RemoteException{
+	public List<GeneralEvent> findByAdmin(@QueryParam("admin")String admin) throws RemoteException{
 		List<GeneralEvent> generalEvents=null;
 		try {
 			generalEvents=generalEventBL.findByAdmin(admin);
+		}catch(UsiDaoException e) {
+			throw new RemoteException(e.getMessage());
+		}
+		return generalEvents;
+	}
+	@Produces(MediaType.APPLICATION_JSON)
+	@GET
+	@Path("/date")
+	public List<GeneralEvent> findByDate(@QueryParam("date") Date date) throws RemoteException{
+		List<GeneralEvent> generalEvents=null;
+		try {
+			generalEvents=generalEventBL.findByDate(date);
+		}catch(UsiDaoException e) {
+			throw new RemoteException(e.getMessage());
+		}
+		return generalEvents;
+	}
+	
+	@Produces(MediaType.APPLICATION_JSON)
+	@GET
+	@Path("/stockNumber")
+	public List<GeneralEvent> findByStockNumber(@QueryParam("stockNumber")String stockNumber) throws RemoteException{
+		List<GeneralEvent> generalEvents=null;
+		try {
+			generalEvents=generalEventBL.findByStockNumber(stockNumber);
 		}catch(UsiDaoException e) {
 			throw new RemoteException(e.getMessage());
 		}
