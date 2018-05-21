@@ -1,7 +1,9 @@
 package co.edu.udea.usi.Rest;
 
 import java.rmi.RemoteException;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -73,6 +75,7 @@ public class GeneralEventService {
 	@Path("/date")
 	public List<GeneralEvent> findByDate(@QueryParam("date") Date date) throws RemoteException{
 		List<GeneralEvent> generalEvents=null;
+		
 		try {
 			generalEvents=generalEventBL.findByDate(date);
 		}catch(UsiDaoException e) {
