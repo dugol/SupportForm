@@ -3,6 +3,7 @@ package co.edu.udea.usi.dto;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -64,7 +65,7 @@ public class GeneralEvent implements java.io.Serializable {
 	}
 
 	public Integer getIdGEvent() {
-		return this.idGEvent;
+		return idGEvent;
 	}
 
 	public void setIdGEvent(Integer idGEvent) {
@@ -72,7 +73,7 @@ public class GeneralEvent implements java.io.Serializable {
 	}
 
 	public Request getRequest() {
-		return this.request;
+		return request;
 	}
 
 	public void setRequest(Request request) {
@@ -80,7 +81,7 @@ public class GeneralEvent implements java.io.Serializable {
 	}
 
 	public Date getDate() {
-		return this.date;
+		return date;
 	}
 
 	public void setDate(Date date) {
@@ -88,7 +89,7 @@ public class GeneralEvent implements java.io.Serializable {
 	}
 
 	public String getEventTime() {
-		return this.eventTime;
+		return eventTime;
 	}
 
 	public void setEventTime(String eventTime) {
@@ -96,7 +97,7 @@ public class GeneralEvent implements java.io.Serializable {
 	}
 
 	public String getStockNumber() {
-		return this.stockNumber;
+		return stockNumber;
 	}
 
 	public void setStockNumber(String stockNumber) {
@@ -104,7 +105,7 @@ public class GeneralEvent implements java.io.Serializable {
 	}
 
 	public String getDetail() {
-		return this.detail;
+		return detail;
 	}
 
 	public void setDetail(String detail) {
@@ -112,7 +113,7 @@ public class GeneralEvent implements java.io.Serializable {
 	}
 
 	public String getAdministrator() {
-		return this.administrator;
+		return administrator;
 	}
 
 	public void setAdministrator(String administrator) {
