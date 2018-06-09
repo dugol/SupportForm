@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import co.edu.udea.usi.bl.RequestBL;
+import co.edu.udea.usi.bl.TypeRequestBL;
+import co.edu.udea.usi.bl.UserBL;
 import co.edu.udea.usi.dto.Request;
 import co.edu.udea.usi.dto.TypeRequest;
 import co.edu.udea.usi.dto.User;
@@ -33,6 +35,12 @@ public class RequestService {
 
 	@Autowired 
 	private RequestBL requestBL;
+	
+	@Autowired
+	private UserBL userBL;
+	
+	@Autowired
+	private TypeRequestBL typeRequestBL;
 	
 	/**
 	 * Servicio que obtiene todas las solicitudes que hay en el sistema
@@ -62,13 +70,17 @@ public class RequestService {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
 	@Path("/create")
-	public Request createRequest(@QueryParam("idRequest")int idRequest,@QueryParam("date")Date date, @QueryParam("eventTime")String eventTime,
-			@QueryParam("user") User user,@QueryParam("office")String office,@QueryParam("description")String description,
-			@QueryParam("typeRequest") TypeRequest typeRequest,@QueryParam("channel") String channel, @QueryParam("priority")int priority,
+	public Request createRequest(@QueryParam("eventTime")String eventTime,
+			@QueryParam("user") String user,@QueryParam("office")String office,@QueryParam("description")String description,
+			@QueryParam("typeRequest") String typeRequest,@QueryParam("channel") String channel, @QueryParam("priority")int priority,
 			@QueryParam("level")int level,@QueryParam("state") char state)throws RemoteException{
 			Request request = null;
+			User user1 = null;
+			TypeRequest typeRequest1 = null;
 		try{
-			request = requestBL.createRequest(idRequest, date, eventTime, user, office, description, typeRequest, channel, priority, level, state);
+			user1 = userBL.findByEmail(user);
+			typeRequest1 = typeRequestBL.findByName(typeRequest);
+			request = requestBL.createRequest(new Date(),eventTime, user1, office, description, typeRequest1, channel, priority, level, state);
 		}catch(UsiDaoException e){
 			throw new RemoteException(e.getMessage());
 		}
@@ -86,12 +98,17 @@ public class RequestService {
 	@POST
 	@Path("/modificate")
 	public Request modificateRequest(@QueryParam("idRequest")int idRequest,@QueryParam("date")Date date, @QueryParam("eventTime")String eventTime,
-			@QueryParam("user") User user,@QueryParam("office")String office,@QueryParam("description")String description,
-			@QueryParam("typeRequest") TypeRequest typeRequest,@QueryParam("channel") String channel, @QueryParam("priority")int priority,
+			@QueryParam("user") String user,@QueryParam("office")String office,@QueryParam("description")String description,
+			@QueryParam("typeRequest") String typeRequest,@QueryParam("channel") String channel, @QueryParam("priority")int priority,
 			@QueryParam("level")int level,@QueryParam("state") char state)throws RemoteException{
 			Request request = null;
+			User user1 = null;
+			TypeRequest typeRequest1 = null;
+
 		try{
-			request = requestBL.modificateRequest(idRequest, date, eventTime, user, office, description, typeRequest, channel, priority, level, state);
+			user1 = userBL.findByEmail(user);
+			typeRequest1 = typeRequestBL.findByName(typeRequest);
+			request = requestBL.modificateRequest(idRequest, date, eventTime, user1, office, description, typeRequest1, channel, priority, level, state);
 		}catch(UsiDaoException e){
 			throw new RemoteException(e.getMessage());
 		}

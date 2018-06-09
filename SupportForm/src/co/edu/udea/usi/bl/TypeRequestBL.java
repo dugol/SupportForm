@@ -17,4 +17,11 @@ public interface TypeRequestBL {
 	 * @throws UsiDaoException Ocurre un error con la conexión.
 	 */
 	public List<TypeRequest> findAllTypeRequest() throws UsiDaoException;
+	
+	/**
+	 * Devuelve un tipo de solicitud seg�n su nombre
+	 * @return Instancia del tipo de solicitud
+	 * @throws UsiDaoException Ocurre un error con la conexión.
+	 */
+	public TypeRequest findByName(String name) throws UsiDaoException;
 }

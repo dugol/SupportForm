@@ -30,7 +30,7 @@ public class RequestBLImpl implements RequestBL {
 	RequestDAO requestDAO;
 	
 	@Override
-	public Request createRequest(int idRequest, Date date, String eventTime, User user, String office,
+	public Request createRequest(Date date, String eventTime, User user, String office,
 			String description, TypeRequest typeRequest, String channel, int priority, int level, char state) throws UsiDaoException {
 		
 		User user1=null;

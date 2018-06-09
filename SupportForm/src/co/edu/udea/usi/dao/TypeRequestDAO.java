@@ -34,5 +34,12 @@ public interface TypeRequestDAO {
 	 * @throws UsiDaoException Ocurre un error con la conexiÃ³n.
 	 */
 	public List<TypeRequest> findAllTypeRequest() throws UsiDaoException;
+	
+	/**
+	 * Entrega un tipo de solicitud según su nombre
+	 * @return Instancia del tipo de solicitud encontrado según el parámetro
+	 * @throws UsiDaoException Ocurre un error con la conexiÃ³n.
+	 */
+	public TypeRequest findByName(String name)throws UsiDaoException;
 
 }
