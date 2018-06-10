@@ -62,7 +62,7 @@ public class UserService {
 	 * @throws UsiDaoException Ocurre un error con la conexión.
 	 */
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	@POST
+	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/login")
 	public User login(@QueryParam("email")String email,@QueryParam("password")String password)throws RemoteException{

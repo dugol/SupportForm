@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -72,15 +73,16 @@ public class RequestService {
 	@Path("/create")
 	public Request createRequest(@QueryParam("eventTime")String eventTime,
 			@QueryParam("user") String user,@QueryParam("office")String office,@QueryParam("description")String description,
-			@QueryParam("typeRequest") String typeRequest,@QueryParam("channel") String channel, @QueryParam("priority")int priority,
-			@QueryParam("level")int level,@QueryParam("state") char state)throws RemoteException{
+			@QueryParam("typeRequest") String typeRequest,@QueryParam("channel") String channel, @QueryParam("priority")String priority,
+			@QueryParam("level")String level,@QueryParam("state") String state)throws RemoteException{
 			Request request = null;
 			User user1 = null;
 			TypeRequest typeRequest1 = null;
 		try{
 			user1 = userBL.findByEmail(user);
 			typeRequest1 = typeRequestBL.findByName(typeRequest);
-			request = requestBL.createRequest(new Date(),eventTime, user1, office, description, typeRequest1, channel, priority, level, state);
+			request = requestBL.createRequest(new Date(),eventTime, user1, office, description, typeRequest1, channel, Integer.valueOf(priority)
+					, Integer.valueOf(level), state.charAt(0));
 		}catch(UsiDaoException e){
 			throw new RemoteException(e.getMessage());
 		}
@@ -93,11 +95,12 @@ public class RequestService {
 	 * @return JSON con la información de la solicitud modificada
 	 * @throws UsiDaoException Ocurre un error con la conexiÃ³n.
 	 */
+	/*
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
 	@Path("/modificate")
-	public Request modificateRequest(@QueryParam("idRequest")int idRequest,@QueryParam("date")Date date, @QueryParam("eventTime")String eventTime,
+	public Request modificateRequest(@QueryParam("idRequest")String idRequest,@QueryParam("date")Date date, @QueryParam("eventTime")String eventTime,
 			@QueryParam("user") String user,@QueryParam("office")String office,@QueryParam("description")String description,
 			@QueryParam("typeRequest") String typeRequest,@QueryParam("channel") String channel, @QueryParam("priority")int priority,
 			@QueryParam("level")int level,@QueryParam("state") char state)throws RemoteException{
@@ -108,10 +111,10 @@ public class RequestService {
 		try{
 			user1 = userBL.findByEmail(user);
 			typeRequest1 = typeRequestBL.findByName(typeRequest);
-			request = requestBL.modificateRequest(idRequest, date, eventTime, user1, office, description, typeRequest1, channel, priority, level, state);
+			request = requestBL.modificateRequest(Integer.valueOf(idRequest), date, eventTime, user1, office, description, typeRequest1, channel, priority, level, state);
 		}catch(UsiDaoException e){
 			throw new RemoteException(e.getMessage());
 		}
 		return request;
-	}
+	}*/
 }
