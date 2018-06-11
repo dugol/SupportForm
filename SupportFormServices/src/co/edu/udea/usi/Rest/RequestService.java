@@ -73,6 +73,7 @@ public class RequestService {
 	@POST
 	@Path("/create")
 	public Request createRequest(RequestWS requestWS)throws RemoteException{
+			System.out.println(requestWS.getUser().toString()+ requestWS.getTypeRequest() + requestWS.getDescription() + requestWS.getEventTime());
 			Request request = null;
 			User user1 = null;
 			TypeRequest typeRequest1 = null;
