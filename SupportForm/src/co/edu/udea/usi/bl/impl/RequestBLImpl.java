@@ -57,6 +57,7 @@ public class RequestBLImpl implements RequestBL {
 			throw new UsiDaoException("El tipo de solicitud no puede nulo");
 		}
 		Request request=new Request(typeRequest,user,date,eventTime,office,description,channel,priority,level,state);
+		request.setIdRequest(0);
 		requestDAO.createRequest(request);
 		return request;
 		

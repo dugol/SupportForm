@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import co.edu.udea.usi.dto.LoginWS;
 import co.edu.udea.usi.dto.User;
 import co.edu.udea.usi.exception.UsiDaoException;
 import co.edu.udea.usi.bl.UserBL;
@@ -62,13 +63,14 @@ public class UserService {
 	 * @throws UsiDaoException Ocurre un error con la conexión.
 	 */
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	@GET
+	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/login")
-	public User login(@QueryParam("email")String email,@QueryParam("password")String password)throws RemoteException{
+	public User login(LoginWS login)throws RemoteException{
 		User user = null;
 		try{
-			user = userBL.login(email, password);
+			//System.out.println(login.getEmail());
+			user = userBL.login(login.getEmail(), login.getPassword());
 		}catch(UsiDaoException e){
 			throw new RemoteException(e.getMessage());
 		}
