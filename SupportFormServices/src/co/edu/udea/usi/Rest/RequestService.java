@@ -20,6 +20,7 @@ import co.edu.udea.usi.bl.RequestBL;
 import co.edu.udea.usi.bl.TypeRequestBL;
 import co.edu.udea.usi.bl.UserBL;
 import co.edu.udea.usi.dto.Request;
+import co.edu.udea.usi.dto.RequestWS;
 import co.edu.udea.usi.dto.TypeRequest;
 import co.edu.udea.usi.dto.User;
 import co.edu.udea.usi.dto.Request;
@@ -49,7 +50,7 @@ public class RequestService {
 	 * @throws UsiDaoException Ocurre un error con la conexión.
 	 */
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	@POST
+	@GET
 	public List<Request> findAllRequest() throws RemoteException{
 		List<Request> requests = null;
 		try{
@@ -71,18 +72,15 @@ public class RequestService {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@POST
 	@Path("/create")
-	public Request createRequest(@QueryParam("eventTime")String eventTime,
-			@QueryParam("user") String user,@QueryParam("office")String office,@QueryParam("description")String description,
-			@QueryParam("typeRequest") String typeRequest,@QueryParam("channel") String channel, @QueryParam("priority")String priority,
-			@QueryParam("level")String level,@QueryParam("state") String state)throws RemoteException{
+	public Request createRequest(RequestWS requestWS)throws RemoteException{
 			Request request = null;
 			User user1 = null;
 			TypeRequest typeRequest1 = null;
 		try{
-			user1 = userBL.findByEmail(user);
-			typeRequest1 = typeRequestBL.findByName(typeRequest);
-			request = requestBL.createRequest(new Date(),eventTime, user1, office, description, typeRequest1, channel, Integer.valueOf(priority)
-					, Integer.valueOf(level), state.charAt(0));
+			user1 = userBL.findByEmail(requestWS.getUser());
+			typeRequest1 = typeRequestBL.findByName(requestWS.getTypeRequest());
+			request = requestBL.createRequest(new Date(),requestWS.getEventTime(), user1, requestWS.getOffice(), requestWS.getDescription(), typeRequest1, requestWS.getChannel(), requestWS.getPriority()
+					, requestWS.getLevel(), requestWS.getState().charAt(0));
 		}catch(UsiDaoException e){
 			throw new RemoteException(e.getMessage());
 		}
